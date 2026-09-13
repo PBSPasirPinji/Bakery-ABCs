@@ -54,7 +54,7 @@ const PRODUCTS = [
     name: "Wholemeal Multigrain",
     description: "Hearty multigrain loaf with oats and seeds.",
     price: 11.90,
-    image: "images/multigrain-loaf.jpg",
+    image: "images/Wholemeal Multigrain.jpg",
     icon: "🌾"
   },
 
