@@ -36,7 +36,7 @@ const PRODUCTS = [
     name: "Classic Sourdough Loaf",
     description: "Naturally leavened, crisp crust, soft open crumb.",
     price: 14.90,
-    image: "images/sourdough-loaf.jpg",
+    image: "images/Classic.jpg",
     icon: "🍞"
   },
   {
