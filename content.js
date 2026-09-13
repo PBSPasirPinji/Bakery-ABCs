@@ -45,7 +45,7 @@ const PRODUCTS = [
     name: "Milk Butter Loaf",
     description: "Soft, slightly sweet white loaf, great for sandwiches.",
     price: 9.50,
-    image: "images/milk-butter-loaf.jpg",
+    image: "images/Milk_Butter.jpg",
     icon: "🍞"
   },
   {
