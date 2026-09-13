@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Bakery ABCs — Order Online</title>
+<link rel="stylesheet" href="style.css" />
+</head>
+<body data-page="customer">
+
+  <!-- Header -->
+  <header class="site-header">
+    <div class="brand">
+      <h1 id="businessName">Bakery ABCs</h1>
+      <p id="businessTagline">Freshly Baked, Every Day</p>
+    </div>
+    <div class="header-actions">
+      <button class="icon-btn" id="cartBtn" aria-label="Open cart">
+        🛒
+        <span class="badge hidden" id="cartCount">0</span>
+      </button>
+    </div>
+  </header>
+
+  <!-- Category navigation -->
+  <nav class="category-nav" id="categoryNav" aria-label="Product categories"></nav>
+
+  <!-- Product listing -->
+  <main>
+    <div id="productSections"></div>
+
+    <!-- Order tracking -->
+    <section class="tracking-section" id="trackingSection">
+      <h2>Track Your Order</h2>
+      <p>Enter your order number (e.g. #001) to check its current status.</p>
+      <form class="tracking-form" id="trackingForm">
+        <input type="text" id="trackingInput" placeholder="#001" autocomplete="off" />
+        <button type="submit">Track Order</button>
+      </form>
+      <div class="tracking-result" id="trackingResult"></div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    &copy; <span id="footerYear"></span> Bakery ABCs. All rights reserved.
+  </footer>
+
+  <!-- Mobile sticky cart bar -->
+  <div class="mobile-cart-bar hidden" id="mobileCartBar">
+    <strong id="mobileCartTotal">0 items · RM 0.00</strong>
+    <button type="button" id="mobileCartBtn">View Cart</button>
+  </div>
+
+  <!-- Cart drawer -->
+  <div class="overlay hidden" id="cartOverlay">
+    <div class="panel">
+      <div class="panel-header">
+        <h2>Your Cart</h2>
+        <button class="close-btn" id="closeCartBtn" aria-label="Close cart">&times;</button>
+      </div>
+      <div class="panel-body" id="cartItems"></div>
+      <div class="panel-footer">
+        <div class="summary-row total">
+          <span>Subtotal</span>
+          <span id="cartSubtotal">RM 0.00</span>
+        </div>
+        <button class="primary-btn" id="cartCheckoutBtn" disabled>Proceed to Checkout</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Checkout modal -->
+  <div class="overlay center hidden" id="checkoutOverlay">
+    <div class="card-panel">
+      <div class="panel-header">
+        <h2>Checkout</h2>
+        <button class="close-btn" id="closeCheckoutBtn" aria-label="Close checkout">&times;</button>
+      </div>
+      <div class="panel-body">
+        <form id="checkoutForm" novalidate>
+          <div class="field">
+            <label for="custName">Full Name</label>
+            <input type="text" id="custName" name="custName" placeholder="Your name" required />
+            <span class="error-text">Please enter your name (at least 2 characters).</span>
+          </div>
+          <div class="field">
+            <label for="custContact">Contact Number</label>
+            <input type="tel" id="custContact" name="custContact" placeholder="e.g. 012-3456789" required />
+            <span class="error-text">Please enter a valid contact number.</span>
+          </div>
+          <div class="field">
+            <label for="orderType">Order Type</label>
+            <select id="orderType" name="orderType"></select>
+          </div>
+          <div class="field">
+            <label for="paymentMethod">Payment Method</label>
+            <select id="paymentMethod" name="paymentMethod"></select>
+          </div>
+
+          <h3 style="margin:18px 0 8px;font-size:0.95rem;">Order Summary</h3>
+          <div class="order-summary-box" id="checkoutSummary"></div>
+
+          <button type="submit" class="primary-btn">Confirm &amp; Place Order</button>
+          <button type="button" class="secondary-btn" id="backToCartBtn">Back to Cart</button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- Order confirmation modal -->
+  <div class="overlay center hidden" id="confirmationOverlay">
+    <div class="card-panel">
+      <div class="panel-header">
+        <h2>Order Placed!</h2>
+        <button class="close-btn" id="confirmationCloseBtn" aria-label="Close">&times;</button>
+      </div>
+      <div class="panel-body">
+        <div class="confirmation-icon">🎉</div>
+        <div class="confirmation-number" id="confirmationOrderNumber">#000</div>
+        <div class="confirmation-status" id="confirmationStatus"></div>
+        <p style="text-align:center;color:var(--color-text-muted);font-size:0.9rem;">
+          Thank you for your order! We'll contact you shortly to confirm the details.
+        </p>
+        <button class="primary-btn" id="trackThisOrderBtn">Track This Order</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast -->
+  <div class="toast" id="toast"></div>
+
+  <script src="content.js"></script>
+  <script src="script.js"></script>
+  <script>
+    document.getElementById("footerYear").textContent = new Date().getFullYear();
+    document.getElementById("businessName").textContent = BUSINESS_INFO.name;
+    document.getElementById("businessTagline").textContent = BUSINESS_INFO.tagline;
+    document.title = BUSINESS_INFO.name + " — Order Online";
+  </script>
+</body>
+</html>

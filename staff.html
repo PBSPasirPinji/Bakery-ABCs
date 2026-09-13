@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Bakery ABCs — Staff</title>
+<link rel="stylesheet" href="style.css" />
+</head>
+<body data-page="staff">
+
+  <!-- ============ LOGIN SCREEN (shown first, always) ============ -->
+  <div class="staff-login-wrap" id="staffLoginScreen">
+    <div class="staff-login-card">
+      <div class="lock-icon">🔒</div>
+      <h1 id="staffBusinessName">Bakery ABCs</h1>
+      <p>Staff Login</p>
+      <form id="staffLoginForm" novalidate>
+        <div class="field">
+          <label for="staffPinInput">Enter PIN</label>
+          <input
+            type="password"
+            id="staffPinInput"
+            inputmode="numeric"
+            autocomplete="off"
+            maxlength="8"
+            placeholder="••••"
+            required
+          />
+        </div>
+        <button type="submit" class="primary-btn">Unlock Order Board</button>
+        <p class="staff-login-error hidden" id="staffLoginError">Incorrect PIN</p>
+      </form>
+    </div>
+  </div>
+
+  <!-- ============ ORDER BOARD (hidden until PIN is correct) ============ -->
+  <div class="hidden" id="staffBoardScreen">
+    <header class="staff-header">
+      <div class="brand">
+        <h1 id="staffBoardBusinessName">Bakery ABCs</h1>
+        <p>Staff Order Board</p>
+      </div>
+      <div class="staff-header-actions">
+        <button type="button" class="staff-refresh-btn" id="staffRefreshBtn">⟳ Refresh</button>
+        <button type="button" id="staffLogoutBtn">Log Out</button>
+      </div>
+    </header>
+
+    <main class="staff-board-wrap">
+      <div class="staff-board-toolbar">
+        <h2>Orders by Status</h2>
+      </div>
+
+      <div class="staff-empty-notice hidden" id="staffEmptyNotice">
+        No orders yet. New orders placed on the Customer Page will appear here automatically.
+      </div>
+
+      <div class="board-columns" id="staffBoard"></div>
+    </main>
+  </div>
+
+  <script src="content.js"></script>
+  <script src="script.js"></script>
+  <script>
+    document.getElementById("staffBusinessName").textContent = BUSINESS_INFO.name;
+    document.getElementById("staffBoardBusinessName").textContent = BUSINESS_INFO.name;
+    document.title = BUSINESS_INFO.name + " — Staff";
+  </script>
+</body>
+</html>
